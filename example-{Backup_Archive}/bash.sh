@@ -1,5 +1,18 @@
 #!/bin/bash
- SRCDIR="/c/School/Semester1/sysad/to_backup/*"
- DESTDIR="/c/School/Semester1/sysad/vault_bash/"
- FILENAME=ug-$(date +%-Y%-m%-d)-$(date +%-T).tgz
- tar --create --gzip --file=$DESTDIR$FILENAME $SRCDIR
+SRCDIR=~/Dokumente/FHNW/Semster1/sysad/source/
+DESTDIR=~/Dokumente/FHNW/Semster1/sysad/target/
+FILENAME=backup_$(date "+%Y%m%d%H%M%S%s").tgz
+MAXBACKUPS=5
+
+#Check if directory exists
+if [ ! -d $DESTDIR ]; then
+  mkdir $DESTDIR
+fi
+
+#Create archive
+#cfz -> c = create, f = file, z = gzip
+tar cfz $DESTDIR$FILENAME -C $(dirname $SRCDIR) $(basename $SRCDIR)
+
+#Remove old archives
+cd $DESTDIR
+ls -tr | head -n -$MAXBACKUPS | xargs --no-run-if-empty rm 
