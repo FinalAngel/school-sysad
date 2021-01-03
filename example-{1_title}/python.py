@@ -4,7 +4,19 @@ import getpass
 import requests
 import subprocess
 
+# print greeting
 DATE_TIME_NOW = datetime.now()
+USER_NAME = getpass.getuser();
+
+if int(DATE_TIME_NOW.strftime("%H")) < 15 :  
+    print('Good morning {}'.format(USER_NAME))
+else:
+    print('Good evening {}'.format(USER_NAME))
+
+# print date information
+print('It\'s {}'.format(DATE_TIME_NOW.strftime('%A the %d.%m.%Y - %H:%M')))
+
+# print weather information
 BASE_API_URL = 'http://api.openweathermap.org/data/2.5/weather'
 API_TOKEN = 'a98b12db9d2e7a5bf4c42f264289e7f3'
 LOCATION = 'zurich'
@@ -20,18 +32,7 @@ WEATHER_ICONS = {
     'Clear': '☀️',
 }
 
-# print greeting
-if int(DATE_TIME_NOW.strftime("%H")) < 15 :  
-    print('Good morning {}'.format(getpass.getuser()))
-else:
-    print('Good evening {}'.format(getpass.getuser()))
-
-# print date information
-print('It\'s {}'.format(datetime.now().strftime('%A the %d.%m.%Y - %H:%M')))
-
-# print weather information
-payload = {'appid': API_TOKEN, 'q': LOCATION, 'units': UNTIS}
-r = requests.get(BASE_API_URL, params = payload)
+r = requests.get(BASE_API_URL, params = {'appid': API_TOKEN, 'q': LOCATION, 'units': UNTIS})
 data = r.json()
 print('Todays weather is {}{} with a temperature of {}°C'.format(data['weather'][0]['description'], WEATHER_ICONS.get(data['weather'][0]['main'], ''), data['main']['temp']))
 
