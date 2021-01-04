@@ -6,7 +6,7 @@ DESTDIR=./bash/target/
 # The maximum amount of backups to have in BACKUP_DIRECTORY
 MAXBACKUPS=5
 
-FILENAME=backup_$(date "+%Y%m%d%H%M%S%s").tgz
+FILENAME=backup_$(date "+%Y%m%d%H%M%S").tgz
 
 # Validate the backup directory exists and create if required
 if [ ! -d $DESTDIR ]; then
