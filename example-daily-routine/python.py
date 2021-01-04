@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from datetime import datetime
 import getpass
 import requests
@@ -34,11 +33,11 @@ WEATHER_ICONS = {
 
 r = requests.get(BASE_API_URL, params = {'appid': API_TOKEN, 'q': LOCATION, 'units': UNTIS})
 data = r.json()
-print('Todays weather is {}{} with a temperature of {}°C'.format(data['weather'][0]['description'], WEATHER_ICONS.get(data['weather'][0]['main'], ''), data['main']['temp']))
+print('Todays weather is {} {}  with a temperature of {}°C'.format(data['weather'][0]['description'], WEATHER_ICONS.get(data['weather'][0]['main'], ''), data['main']['temp']))
 
 # launch programms
 if int(DATE_TIME_NOW.strftime("%H")) < 15 :  
-    subprocess.call('firefox', shell=True)
-    subprocess.call('thunderbird', shell=True)
+    subprocess.call('chrome-cli open ""', shell=True, stdout=subprocess.DEVNULL)
 else:
-    subprocess.call('firefox https://netflix.com https://youtube.com', shell=True)
+    subprocess.call('chrome-cli open "https://netflix.com"', shell=True, stdout=subprocess.DEVNULL)
+    subprocess.call('chrome-cli open "https://youtube.com"', shell=True, stdout=subprocess.DEVNULL)

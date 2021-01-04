@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 while [[ true ]]; do
   read -p "Rockt Sysad die Hütte? " yn
 

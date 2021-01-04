@@ -5,9 +5,13 @@ Working repository for the **sysad** presentation.
 ## Instructions
 
 To run the examples, you need at least Python version **3.8** and Bash
-version **5.0**. Then run:
+version **5.0**. The scripts were tested on a macOS Catalina system.
 
-- pip install -r requirements.txt
+The following requirements need to be installed:
+
+- brew install chrome-cli
+- brew install jq
+- pip install -r requirements.txt (from within the root directory)
 
 ### Comparison
 

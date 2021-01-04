@@ -1,10 +1,12 @@
 from datetime import datetime
 from pathlib import Path
+import os
 import zipfile
+import subprocess
 
 
-OBJECT_TO_BACKUP = 'C:/School/Semester1/sysad/to_backup'  # The file or directory to backup
-BACKUP_DIRECTORY = 'C:/School/Semester1/sysad/vault'  # The location to store the backups in
+OBJECT_TO_BACKUP = os.path.abspath("python/source")  # The file or directory to backup
+BACKUP_DIRECTORY = os.path.abspath("python/target")  # The location to store the backups in
 MAX_BACKUP_AMOUNT = 5  # The maximum amount of backups to have in BACKUP_DIRECTORY
 
 
@@ -23,7 +25,7 @@ existing_backups = [
 
 # Enforce max backups and delete oldest if there will be too many after the new backup
 oldest_to_newest_backup_by_name = list(sorted(existing_backups, key=lambda f: f.name))
-while len(oldest_to_newest_backup_by_name) >= MAX_BACKUP_AMOUNT:  # >= because we will have another soon
+while len(oldest_to_newest_backup_by_name) > MAX_BACKUP_AMOUNT:  # >= because we will have another soon
     backup_to_delete = oldest_to_newest_backup_by_name.pop(0)
     backup_to_delete.unlink()
 
@@ -48,3 +50,5 @@ elif object_to_backup_path.is_dir():
             )
 # Close the created zip file
 zip_file.close()
+
+subprocess.call('ls -1t ' + BACKUP_DIRECTORY, shell=True)
