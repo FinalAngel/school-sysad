@@ -17,7 +17,7 @@ echo "It's $date"
 # print weather information 
 URL='http://api.openweathermap.org/data/2.5/weather?q=Zurich&appid=a98b12db9d2e7a5bf4c42f264289e7f3&units=metric'
 
-declare -a icons=( ["Clouds"]="☁️ " ["Thunderstorm"]="⚡ " ["Drizzle"]="⛆ " ["Rain"]="☔ " ["Snow"]="❄️ ️" ["Mist"]="🌫️ " ["Fog"]="🌫️ ️" ["Clear"]="☀️ " )
+declare -A icons=( ["Clouds"]="☁️ " ["Thunderstorm"]="⚡ " ["Drizzle"]="⛆ " ["Rain"]="☔ " ["Snow"]="❄️ ️" ["Mist"]="🌫️ " ["Fog"]="🌫️ ️" ["Clear"]="☀️ " )
 
 data=$(curl -s $URL)
 
