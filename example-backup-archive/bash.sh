@@ -1,12 +1,8 @@
 #!/bin/bash
-# The file or directory to backup
-SRCDIR=./bash/source/
-# The location to store the backups in
-DESTDIR=./bash/target/
-# The maximum amount of backups to have in BACKUP_DIRECTORY
-MAXBACKUPS=5
-
-FILENAME=backup_$(date "+%Y%m%d%H%M%S").tgz
+SRCDIR=./bash/source/ # The file or directory to backup
+DESTDIR=./bash/target/ # The location to store the backups in
+MAXBACKUPS=5 # The maximum amount of backups to have in BACKUP_DIRECTORY
+FILENAME=backup_$(date "+%Y%m%d%H%M%S").tgz # Filename
 
 # Validate the backup directory exists and create if required
 if [ ! -d $DESTDIR ]; then
