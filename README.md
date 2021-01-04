@@ -5,7 +5,9 @@ Working repository for the **sysad** presentation.
 ## Instructions
 
 To run the examples, you need at least Python version **3.8** and Bash
-version **5.0**.
+version **5.0**. Then run:
+
+- pip install -r requirements.txt
 
 ### Comparison
 
