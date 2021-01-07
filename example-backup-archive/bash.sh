@@ -10,9 +10,7 @@ if [ ! -d $DESTDIR ]; then
 fi
 
 # Enforce max backups and delete oldest if there will be too many after the new backup
-cd $DESTDIR
-ls -1t | tail -n $MAXBACKUPS | xargs rm
-cd ../../
+ls -1t $DESTDIR | tail -n $MAXBACKUPS | (cd $DESTDIR && xargs rm)
 
 # Create zip file (for both file and folder options)
 #cfz -> c = create, f = file, z = gzip
