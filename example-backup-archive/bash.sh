@@ -6,7 +6,7 @@ FILENAME=backup_$(date "+%Y%m%d%H%M%S").tgz # Filename
 
 # Validate the backup directory exists and create if required
 if [ ! -d $DESTDIR ]; then
-  mkdir $DESTDIR
+  mkdir -p $DESTDIR
 fi
 
 # Enforce max backups and delete oldest if there will be too many after the new backup
